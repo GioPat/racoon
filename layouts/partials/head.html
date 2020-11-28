@@ -1,0 +1,7 @@
+<meta charset="utf-8">
+{{ if eq (getenv "HUGO_ENV") "production" }}
+<meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+{{ else }}
+<meta NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+{{ end }}
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
