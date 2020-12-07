@@ -1,7 +1,16 @@
 <footer>
-  <div class="label">{{ .Site.Title }} © <script>document.write(new Date().getFullYear())</script></div>
+  <div class="label">
+    {{ .Site.Title }} © <script>document.write(new Date().getFullYear())</script>
+  </div>
   <div class="spacer"></div>
-  <div class="item"><span>Facebook</span></div>
-  <div class="item"><span>Instagram</span></div>
-  <div class="item"><span>Pinterest</span></div>
+  {{range .Site.Params.social}}
+    <a class="social" href="{{ .url }}" target="_blank">
+      {{ if fileExists (printf "themes/racoon/static/svg/%s.svg" .identifier) }}
+        {{ $iconURL := printf "/svg/%s.svg" .identifier}}
+        <img src="{{ $iconURL }}" width="30px"/>
+      {{else}}
+        <span>{{.name}}</span>
+      {{end }}
+    </a>
+  {{end}}
 </footer>
