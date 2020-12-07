@@ -2,6 +2,8 @@
 {{- $language_code := site.LanguageCode | default "it" -}}
 <html lang="{{$language_code}}">
   <head>
+    {{ $styles := resources.Get "scss/racoon.scss" | resources.ExecuteAsTemplate "style.racoon.scss" . | toCSS | minify | fingerprint}}
+    <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen"/>
     {{- partial "head.html" . }}
   </head>
   <body>

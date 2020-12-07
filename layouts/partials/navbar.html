@@ -1,17 +1,19 @@
 {{ $show_navbar := site.Params.main_menu.enable | default true }}
 {{ if $show_navbar }}
 <nav>
-  <div>
-    <a href="{{ .Site.Home.RelPermalink }}">LOGO</a>
+  <div class="nav">
+    <input type="checkbox">
+    <span></span>
+    <span></span>
+    <ul class="menu">
+      {{range .Site.Menus.main}}
+        <li>
+          {{ $url := urls.Parse .URL }}
+          {{ $baseurl := urls.Parse $.Site.Params.Baseurl }}
+          <a href="{{ with .Page }}{{ .RelPermalink }}{{ else }}{{ .URL | relLangURL }}{{ end }}">{{.Name}}</a>
+        </li>
+      {{end}}
+    </ul>
   </div>
-  <ul>
-    {{range .Site.Menus.main}}
-      <li>
-        {{ $url := urls.Parse .URL }}
-        {{ $baseurl := urls.Parse $.Site.Params.Baseurl }}
-        <a href="{{ with .Page }}{{ .RelPermalink }}{{ else }}{{ .URL | relLangURL }}{{ end }}">{{.Name}}</a>
-      </li>
-    {{end}}
-  </ul>
 </nav>
 {{end}}
