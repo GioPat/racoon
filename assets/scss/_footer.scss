@@ -5,16 +5,20 @@ $footer_delay_display: $footer_element_number * $footer_element_display_animatio
 
 footer {
   min-height: 2vh;
+  width: 100vw;
   margin-top: auto;
   text-transform: uppercase;
   color: black;
   display: flex;
   flex-wrap: wrap;
+  background-color: #eed7c5;
   align-content: center;
   align-items: center;
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
+  position: fixed;
+  bottom: 0px;
+  padding-left: 1vw;
+  padding-top: 1.5vh;
+  padding-bottom: 1vh;
 }
 
 footer > .social {
