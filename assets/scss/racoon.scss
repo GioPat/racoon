@@ -5,6 +5,8 @@ $main_color: {{ .Site.Params.styles.main_color | default "#eee2df" }};
 $contrast_color: {{ .Site.Params.styles.constrast_color | default "#b36a5e" }};
 $breakpoint-tablet: 1024px;
 
+$font_size: {{ .Site.Params.styles.font_size | default "x-large" }};
+
 @import "base";
-@import "navigation";
+@import "navigation_new";
 @import "footer";

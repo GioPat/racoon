@@ -1,0 +1,22 @@
+<input type="checkbox" id="main-navigation-toggle" class="btn btn--close" title="Toggle main navigation" />
+<label for="main-navigation-toggle">
+  <span></span>
+</label>
+
+<div style="z-index: 999; position: absolute; top: 35px; left: 35px; width: 80px; height: 50px;">
+  <a href="/">
+    <img style="width: 100%;" src="/img/{{.Site.Params.logoName}}" />
+  </a>
+</div>
+<nav id="main-navigation" class="nav-main">
+    <ul class="menu">
+        {{range .Site.Menus.main}}
+        <li class="menu__item">
+          {{ $url := urls.Parse .URL }}
+          {{ $baseurl := urls.Parse $.Site.Params.Baseurl }}
+          <a class="menu__link" href="{{ with .Page }}{{ .RelPermalink }}{{ else }}{{ .URL | relLangURL }}{{ end }}">{{.Name}}</a>
+        </li>
+      {{end}}
+
+    </ul>
+</nav>

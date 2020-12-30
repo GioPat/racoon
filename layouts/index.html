@@ -1,27 +1,18 @@
 
 {{ define "main" }}
-  <!--<header class="homepage-header">
-    <h1>{{.Title}}</h1>
-    {{ with .Params.subtitle }}
-    <span class="subtitle">{{.}}</span>
-    {{ end }}
-  </header> -->
   <div class="homepage-content">
     <!-- Note that the content for index.html, as a sort of list page, will pull from content/_index.md -->
     <div id="section-div">
-      {{ range .Params.sections}}
-        <div class="image-block">
-          <img src="/img/{{.image}}" />
+      {{ range $index, $element := .Params.sections}}
+        <div class="image-block slide">
+          {{ $className := "image-text-left "}}
+          {{ if eq (mod $index 2) 1 }}
+            {{ $className = "image-text-right" }}
+          {{ end }}
+          <div class="{{$className}}"><h1>{{$element.text}}</h1></div>
+          <img src="/img/{{$element.image}}" />
         </div>
       {{end}}
     </div>
-    <div id="firstBlock"> </div>
-    <div id="secondBlock"> </div>
-
-  </div>
-  <div>
-    {{ range first 10 .Site.RegularPages }}
-        {{ .Render "summary"}}
-    {{ end }}
   </div>
 {{ end }}

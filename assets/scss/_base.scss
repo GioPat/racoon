@@ -1,3 +1,5 @@
+$fade_speed: 1s;
+
 @font-face {
   font-family: 'Handlee';
   src: local('Handlee'), url('/fonts/Handlee-Regular.ttf');
@@ -8,6 +10,7 @@
 body {
   font-family: 'Handlee', Arial, Helvetica;
   background-color: $main_color;
+  font-size: $font_size;
   min-height: 100vh;
   margin: 0;
   display: flex;
@@ -17,6 +20,18 @@ body {
 
 .image-block {
   width: 100vw;
+  position: relative;
+  
+  .image-text-left {
+    position: absolute;
+    top: 250px;
+    left: 40px;
+  }
+  .image-text-right {
+    position: absolute;
+    top: 250px;
+    right: 40px;
+  }
 }
 
 .image-block > img {
@@ -24,16 +39,16 @@ body {
   height: 100%;
 }
 
-#firstBlock {
-  width: 100vw;
-  max-width: 100%;
-  height: 80vh;
-  background: red;
+
+.slide {
+  opacity: 1;
+  -webkit-transition: opacity $fade_speed ease-in-out;
+  -moz-transition: opacity $fade_speed ease-in-out;
+  -ms-transition: opacity $fade_speed ease-in-out;
+  -o-transition: opacity $fade_speed ease-in-out;
+  transition: opacity $fade_speed ease-in-out;
 }
 
-#secondBlock {
-  width: 100vw;
-  max-width: 100%;
-  height: 80vh;
-  background: blue;
+.slide.fade {
+  opacity: 0;
 }
