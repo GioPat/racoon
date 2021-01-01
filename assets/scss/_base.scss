@@ -18,19 +18,44 @@ body {
   overflow-x: hidden;
 }
 
+.column-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-centered {
+  align-self: center;
+}
+
+#nf-icon-container {
+  align-self: center;
+  width: 20vw;
+}
+
+#nf-icon {
+  width: 100%;
+}
+
+.main-content {
+  padding-left: 2vw;
+  padding-right: 2vw;
+  padding-bottom: 20vh;
+  margin-top: 5vh;
+}
+
 .image-block {
   width: 100vw;
   position: relative;
   
   .image-text-left {
     position: absolute;
-    top: 250px;
-    left: 40px;
+    top: 40%;
+    left: 5%;
   }
   .image-text-right {
     position: absolute;
-    top: 250px;
-    right: 40px;
+    top: 40%;
+    right: 5%;
   }
 }
 

@@ -4,4 +4,6 @@
 {{ else }}
 <meta NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 {{ end }}
+<meta NAME="description" content="{{.Description}}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>

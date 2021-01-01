@@ -2,17 +2,15 @@
 {{- $language_code := site.LanguageCode | default "it" -}}
 <html lang="{{$language_code}}">
   <head>
-    {{ $opts := dict "targetPath" "main.js" "minify" (not .Site.BuildDrafts) }}
-    {{ $built := resources.Get "js/main.js" | js.Build $opts }}
-    <script type="text/javascript" src="{{ $built.RelPermalink }}" defer></script>
 
     {{ $styles := resources.Get "scss/racoon.scss" | resources.ExecuteAsTemplate "style.racoon.scss" . | toCSS | minify | fingerprint}}
     <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen"/>
     {{- partial "head.html" . }}
+    {{- block "header" . }}{{- end}}
   </head>
   <body>
     <header>
-      {{ partial "navbar_new.html" . }}
+      {{ partial "navbar.html" . }}
     </header>
     <main aria-role="main" id="content">
       {{- block "main" . }}{{- end }}

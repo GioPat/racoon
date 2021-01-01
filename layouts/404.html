@@ -1,7 +1,19 @@
 {{ define "main"}}
   <main id="main">
-    <div>
-      <h1 id="title"><a href="{{ "/" | relURL }}">Go Home</a></h1>
+    <div class="main-content column-container">
+      <div id="nf-icon-container">
+        <img
+          id="nf-icon"
+          alt="Not found icon"
+          title="{{ .Site.Params.notFoundIconTitle }}"
+          src="{{ .Site.Params.notFoundIconPath }}"
+        >
+      </div>
+      <div class="flex-centered">
+        <h2 class="main-content">
+          We apologize! The requested URL was not found on this server.
+        </h2>
+      </div>
     </div>
   </main>
 {{ end }}

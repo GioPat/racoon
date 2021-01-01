@@ -1,0 +1,17 @@
+{{ define "header" }}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "url": {{ .Site.BaseURL }},
+    "logo": {{ printf "%s%s" .Site.BaseURL .Site.Params.logoName }}
+  }
+</script>
+{{ end }}
+
+{{ define "main" }}
+<div class="main-content">
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+</div>
+{{ end }}

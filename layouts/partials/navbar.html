@@ -1,19 +1,38 @@
-{{ $show_navbar := site.Params.main_menu.enable | default true }}
-{{ if $show_navbar }}
-<nav>
-  <div class="nav">
-    <input type="checkbox">
-    <span></span>
-    <span></span>
-    <ul class="menu">
-      {{range .Site.Menus.main}}
-        <li>
-          {{ $url := urls.Parse .URL }}
-          {{ $baseurl := urls.Parse $.Site.Params.Baseurl }}
-          <a href="{{ with .Page }}{{ .RelPermalink }}{{ else }}{{ .URL | relLangURL }}{{ end }}">{{.Name}}</a>
+<div class="header-container">
+  <div class="navigation-button">
+    <input type="checkbox" id="main-navigation-toggle" class="btn btn--close" title="Toggle main navigation" />
+    <label for="main-navigation-toggle">
+      <span></span>
+    </label>
+    <nav id="main-navigation" class="nav-main">
+      <ul class="menu">
+        {{range .Site.Menus.main}}
+          <li class="menu__item">
+            {{ $url := urls.Parse .URL }}
+            {{ $baseurl := urls.Parse $.Site.Params.Baseurl }}
+            <a class="menu__link" href="{{ with .Page }}{{ .RelPermalink }}{{ else }}{{ .URL | relLangURL }}{{ end }}">{{.Name}}</a>
+          </li>
+        {{ end }}
+        {{ if gt (len $.Site.Home.AllTranslations) 1 }}
+        <li class="menu__item">
+          <a class="menu__link" href="#">{{ i18n "language" }}</a>
+          <ul class="submenu">
+          {{ range $.Site.Home.AllTranslations }}
+            <li class="menu__item">
+              <a class="menu__link" href="{{ .Permalink }}">
+                {{ i18n .Language.LanguageName }}
+              </a>
+            </li>
+          {{ end }}
+          </ul>
+        {{ end }}
         </li>
-      {{end}}
-    </ul>
+      </ul>
+    </nav>
   </div>
-</nav>
-{{end}}
+  <div class="logo">
+    <a href="/{{.Site.Language.Lang}}">
+      <img style="width: 100%;" alt="Logo" title="logo" src="/img/{{.Site.Params.logoName}}" />
+    </a>
+  </div>
+</div>

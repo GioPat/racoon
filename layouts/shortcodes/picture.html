@@ -1,0 +1,15 @@
+{{ $loadingType := .Get "loadingType" | default "lazy"}}
+{{ $altText := .Get "alt" | default "" }}
+{{ $titleText := .Get "title" | default "" }}
+
+<picture>
+    {{ .Inner }}
+    <img
+        src="{{ .Get `baseImageURL` }}"
+        loading="{{ $loadingType }}"
+        alt="{{ $altText }}"
+        title="{{ $titleText }}"
+        width="{{ .Get `width` | default `100%` }}"
+        height="{{ .Get `height` | default `100%` }}"
+    >
+</picture>

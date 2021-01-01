@@ -1,16 +1,13 @@
 function callbackFunc(entries, observer)
 {
   entries.forEach(entry => {
-    var txt = entry.target.id + " visibility: " + entry.isIntersecting;
+    // var txt = entry.target.id + " visibility: " + entry.isIntersecting;
 
     if (entry.isIntersecting) {
       entry.target.classList.remove("fade");
     } else {
       entry.target.classList.add("fade");
     }
-    // entry.target.classList.toggle("fade");
-    // document.getElementById('log').appendChild(document.createTextNode(txt));
-    // document.getElementById('log').appendChild(document.createElement("br"));
   });
 }
 

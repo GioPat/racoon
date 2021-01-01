@@ -1,13 +1,18 @@
 <footer>
-  <div class="label">
-    {{ .Site.Title }} © <script>document.write(new Date().getFullYear())</script>
+  <div id="footer" class="label">
+    {{ .Site.Title }} © <script>
+      const spanNode = document.createElement("span");
+      const text = document.createTextNode(new Date().getFullYear());
+      spanNode.appendChild(text);
+      document.getElementById("footer").appendChild(spanNode);
+    </script>
   </div>
   <div class="spacer"></div>
   {{range .Site.Params.social}}
     <a class="social" href="{{ .url }}" target="_blank">
       {{ if fileExists (printf "themes/racoon/static/svg/%s.svg" .identifier) }}
         {{ $iconURL := printf "/svg/%s.svg" .identifier}}
-        <img src="{{ $iconURL }}" width="30px"/>
+        <img alt="{{ .identifier }}" src="{{ $iconURL }}" width="30px"/>
       {{else}}
         <span>{{.name}}</span>
       {{end }}

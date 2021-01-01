@@ -8,5 +8,5 @@ $breakpoint-tablet: 1024px;
 $font_size: {{ .Site.Params.styles.font_size | default "x-large" }};
 
 @import "base";
-@import "navigation_new";
+@import "navigation";
 @import "footer";
