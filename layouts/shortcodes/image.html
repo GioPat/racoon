@@ -1,1 +1,2 @@
-<source media="(min-width:650px)" srcset="{{ .Get `src`}}">
+{{ $width := .Get "minWidth"}}
+<source media="(min-width: {{ $width }})" srcset="{{ .Get `src`}}">

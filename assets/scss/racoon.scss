@@ -3,6 +3,7 @@
 $main_color: {{ .Site.Params.styles.main_color | default "#eee2df" }};
 // $contrast_color: {{ .Site.Params.styles.constrast_color | default "#e27d60" }};
 $contrast_color: {{ .Site.Params.styles.constrast_color | default "#b36a5e" }};
+$text_color_over_contrast: {{ .Site.Params.styles.text_constrast_color | default "white" }};
 $breakpoint-tablet: 1024px;
 
 $font_size: {{ .Site.Params.styles.font_size | default "x-large" }};
@@ -10,3 +11,4 @@ $font_size: {{ .Site.Params.styles.font_size | default "x-large" }};
 @import "base";
 @import "navigation";
 @import "footer";
+@import "slider"
